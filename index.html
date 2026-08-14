@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Daniel Park | Portfolio</title>
+        <style>
+            /* 1. SOFT BLACK BACKGROUND & CSS VARIABLES */
+            :root {
+            --bg-color: #101216;            /* Soft matte black background */
+            --text-main: #e6edf3;
+            --text-muted: #8b949e;
+            --accent-glow: rgba(56, 189, 248, 0.18); /* Cyan/Blue lighting glow */
+            --mouse-x: 50vw;
+            --mouse-y: 50vh;
+            }
+
+            * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            }
+
+            html {
+            scroll-behavior: smooth;
+            }
+
+            body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            }
+
+            /* 2. WAVE TEXTURE OVERLAY */
+            .wave-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+            /* Repeating subtle vector waves */
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="30" viewBox="0 0 120 30"><path d="M 0 15 Q 30 0 60 15 T 120 15" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1.2"/></svg>');
+            }
+
+            /* 3. INTERACTIVE MOUSE LIGHTING GLOW */
+            .spotlight {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+            background: radial-gradient(
+                650px circle at var(--mouse-x) var(--mouse-y),
+                var(--accent-glow),
+                transparent 80%
+            );
+            }
+
+            /* 4. LAYOUT STRUCTURE */
+            .layout {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            }
+
+            /* 5. FIXED LEFT SIDEBAR TABS */
+            .sidebar {
+            position: fixed;
+            top: 0;
+            width: 280px;
+            height: 100vh;
+            padding: 5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 3rem;
+            }
+
+            .brand h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #ffffff;
+            }
+
+            .brand p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.4rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+            }
+
+            .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            }
+
+            .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            display: inline-block;
+            }
+
+            .nav-links a:hover,
+            .nav-links a.active {
+            color: #ffffff;
+            transform: translateX(6px);
+            }
+
+            /* 6. MAIN SCROLLABLE CONTENT AREA */
+            .content {
+            margin-left: 300px;
+            padding: 5rem 2rem;
+            width: calc(100% - 300px);
+            }
+
+            section {
+            min-height: 70vh;
+            margin-bottom: 4rem;
+            }
+
+            section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            color: #ffffff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.5rem;
+            }
+
+            .card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 10px;
+            padding: 1.75rem;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(5px);
+            }
+
+            .card h3 {
+            font-size: 1.1rem;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            }
+
+            .card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 0.95rem;
+            }
+
+            /* Responsive adjustment for small screens */
+            @media (max-width: 768px) {
+            .layout { flex-direction: column; }
+            .sidebar { position: relative; height: auto; width: 100%; padding: 2rem; }
+            .content { margin-left: 0; width: 100%; padding: 2rem; }
+            }
+        </style>
+    </head>
+</html>
