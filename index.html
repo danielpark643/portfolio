@@ -175,4 +175,116 @@
             }
         </style>
     </head>
+    <body>
+
+    <!-- Background Layers -->
+    <div class="wave-pattern"></div>
+    <div class="spotlight"></div>
+
+    <!-- Main Website Container -->
+    <div class="layout">
+        
+        <!-- Top-Left Sidebar Tabs -->
+        <nav class="sidebar">
+            <div class="brand">
+                <h1>DANIEL PARK</h1>
+                <p>Embedded Systems</p>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#about" class="nav-item">About</a></li>
+                <li><a href="#projects" class="nav-item">Projects</a></li>
+                <li><a href="#experience" class="nav-item">Experience</a></li>
+                <li><a href="#skills" class="nav-item">Skills</a></li>
+                <li><a href="#resume" class="nav-item">Resume</a></li>
+                <li><a href="#contact" class="nav-item">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Continuous Scrolling Content -->
+        <main class="content">
+            
+            <section id="about">
+                <h2>About</h2>
+                <div class="card">
+                    <p>Computer Engineering student at the University of Michigan focused on low-level firmware, real-time microcontrollers, and hardware-software integration.</p>
+                </div>
+            </section>
+
+            <section id="projects">
+                <h2>Projects</h2>
+                <div class="card">
+                    <h3>Tom & Jerry Multi-Robot Embedded System</h3>
+                    <p>Architected a multi-node system using STM32 microcontrollers and a DE2 FPGA with real-time wireless UART tracking and PWM motor control.</p>
+                </div>
+                <div class="card">
+                    <h3>Stock Market Simulation</h3>
+                    <p>Designed a high-performance C++ order-matching engine to emulate real-world stock market trading conditions.</p>
+                </div>
+            </section>
+
+            <section id="experience">
+                <h2>Experience</h2>
+                <div class="card">
+                    <h3>Full-Stack Engineer — Crateble</h3>
+                    <p>Developed automated regression testing suites and built full-stack software features across frontend and backend systems.</p>
+                </div>
+            </section>
+
+            <section id="skills">
+                <h2>Skills</h2>
+                <div class="card">
+                    <p><strong>Languages:</strong> C, C++, Python, Verilog, ARM Assembly, JavaScript</p>
+                    <p style="margin-top: 0.5rem;"><strong>Hardware:</strong> STM32, I2C, UART, PWM, Logic Analyzers, Oscilloscopes</p>
+                </div>
+            </section>
+
+            <section id="resume">
+                <h2>Resume</h2>
+                <div class="card">
+                    <p>Download my full resume or view technical details on GitHub.</p>
+                </div>
+            </section>
+
+            <section id="contact">
+                <h2>Contact</h2>
+                <div class="card">
+                    <p>Email: danielpk@umich.edu</p>
+                    <p style="margin-top: 0.5rem;">GitHub: github.com/danielpark643</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- JavaScript for Mouse Lighting & Active Nav Highlighting -->
+    <script>
+        // 1. Mouse Cursor Lighting Effect
+        document.addEventListener('mousemove', (e) => {
+            document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+            document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
+        });
+
+        // 2. Active Tab Highlighting on Scroll
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
 </html>
