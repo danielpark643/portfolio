@@ -1,260 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Daniel Park | Portfolio</title>
-        <style>
-            /* 1. SOFT BLACK BACKGROUND & CSS VARIABLES */
-            :root {
-            --bg-color: #101216;            /* Soft matte black background */
-            --text-main: #e6edf3;
-            --text-muted: #8b949e;
-            --accent-glow: rgba(56, 189, 248, 0.18); /* Cyan/Blue lighting glow */
-            --mouse-x: 50vw;
-            --mouse-y: 50vh;
-            }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Park | Portfolio</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <!-- External Stylesheet Linked Here -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-            * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            }
+    <!-- Top Anchor for Logo Scroll -->
+    <div id="top"></div>
 
-            html {
-            scroll-behavior: smooth;
-            }
+    <!-- Background Wave Layers -->
+    <div class="wave-pattern dim"></div>
+    <div class="wave-pattern bright"></div>
 
-            body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            overflow-x: hidden;
-            min-height: 100vh;
-            }
-
-            /* 2. WAVE TEXTURE OVERLAY */
-            .wave-pattern {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 0;
-            /* Repeating subtle vector waves */
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="30" viewBox="0 0 120 30"><path d="M 0 15 Q 30 0 60 15 T 120 15" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1.2"/></svg>');
-            }
-
-            /* 3. INTERACTIVE MOUSE LIGHTING GLOW */
-            .spotlight {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 1;
-            background: radial-gradient(
-                650px circle at var(--mouse-x) var(--mouse-y),
-                var(--accent-glow),
-                transparent 80%
-            );
-            }
-
-            /* 4. LAYOUT STRUCTURE */
-            .layout {
-            display: flex;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-            }
-
-            /* 5. FIXED LEFT SIDEBAR TABS */
-            .sidebar {
-            position: fixed;
-            top: 0;
-            width: 280px;
-            height: 100vh;
-            padding: 5rem 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            gap: 3rem;
-            }
-
-            .brand h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: #ffffff;
-            }
-
-            .brand p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 0.4rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            font-weight: 600;
-            }
-
-            .nav-links {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-            }
-
-            .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            display: inline-block;
-            }
-
-            .nav-links a:hover,
-            .nav-links a.active {
-            color: #ffffff;
-            transform: translateX(6px);
-            }
-
-            /* 6. MAIN SCROLLABLE CONTENT AREA */
-            .content {
-            margin-left: 300px;
-            padding: 5rem 2rem;
-            width: calc(100% - 300px);
-            }
-
-            section {
-            min-height: 70vh;
-            margin-bottom: 4rem;
-            }
-
-            section h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            letter-spacing: 1px;
-            color: #ffffff;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 0.5rem;
-            }
-
-            .card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 10px;
-            padding: 1.75rem;
-            margin-bottom: 1.5rem;
-            backdrop-filter: blur(5px);
-            }
-
-            .card h3 {
-            font-size: 1.1rem;
-            color: #ffffff;
-            margin-bottom: 0.5rem;
-            }
-
-            .card p {
-            color: var(--text-muted);
-            line-height: 1.6;
-            font-size: 0.95rem;
-            }
-
-            /* Responsive adjustment for small screens */
-            @media (max-width: 768px) {
-            .layout { flex-direction: column; }
-            .sidebar { position: relative; height: auto; width: 100%; padding: 2rem; }
-            .content { margin-left: 0; width: 100%; padding: 2rem; }
-            }
-        </style>
-    </head>
-    <body>
-
-    <!-- Background Layers -->
-    <div class="wave-pattern"></div>
-    <div class="spotlight"></div>
-
-    <!-- Main Website Container -->
-    <div class="layout">
+    <!-- Top Header Navigation Bar -->
+    <header class="navbar">
+        <a href="#top" class="brand-logo-link" title="Back to Top">
+            <!-- UPDATED PATH -->
+            <img src="assets/logo.png" alt="Daniel Park Logo" class="brand-logo">
+        </a>
         
-        <!-- Top-Left Sidebar Tabs -->
-        <nav class="sidebar">
-            <div class="brand">
-                <h1>DANIEL PARK</h1>
-                <p>Embedded Systems</p>
+        <ul class="nav-links">
+            <li><a href="#about" class="nav-item">About</a></li>
+            <li><a href="#projects" class="nav-item">Projects</a></li>
+            <li><a href="#experience" class="nav-item">Experience</a></li>
+            <li><a href="#skills" class="nav-item">Skills</a></li>
+            <li><a href="#resume" class="nav-item">Resume</a></li>
+            <li><a href="#contact" class="nav-item">Contact</a></li>
+        </ul>
+    </header>
+
+    <!-- Continuous Scrolling Content Below Navbar -->
+    <main class="content">
+        
+        <div class="hero-container">
+            <div class="hero-text">
+                <p class="greeting">Hello, I'm</p>
+                <h1 class="name-title">DANIEL<br>PARK</h1>
+                <p class="tagline">Engineer, Developer, Designer</p>
+                
+                <div class="social-links">
+                    <a href="https://github.com/danielpark643" target="_blank" rel="noopener noreferrer" title="GitHub">
+                        <svg viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://LinkedIn.com/in/danielparkNJ" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-code">
+                <div class="code-window-wrapper">
+                    <div class="code-window">
+<pre><code><span class="keyword">const</span> developer = {
+  <span class="prop">name:</span> <span class="string">'Daniel Park'</span>,
+  <span class="prop">skills:</span> [<span class="string">'C'</span>, <span class="string">'C++'</span>, <span class="string">'Python'</span>, 
+           <span class="string">'TypeScript'</span>, <span class="string">'STM32'</span>],
+  <span class="prop">hardWorker:</span> <span class="keyword">true</span>,
+  <span class="prop">quickLearner:</span> <span class="keyword">true</span>
+  <span class="prop">openToWork:</span> <span class="keyword">true</span>
+};</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section id="about">
+            <div class="about-header-line">
+                <span class="line"></span> About Me
             </div>
             
-            <ul class="nav-links">
-                <li><a href="#about" class="nav-item">About</a></li>
-                <li><a href="#projects" class="nav-item">Projects</a></li>
-                <li><a href="#experience" class="nav-item">Experience</a></li>
-                <li><a href="#skills" class="nav-item">Skills</a></li>
-                <li><a href="#resume" class="nav-item">Resume</a></li>
-                <li><a href="#contact" class="nav-item">Contact</a></li>
-            </ul>
-        </nav>
+            <div class="about-layout">
+                <div class="about-left">
+                    <h2>Architect through Hardware,<br>Implement through Software.</h2>
+                    <p class="about-intro">
+                        Hi, I'm <span class="highlight-cyan">Daniel Park</span>. I am a <span class="highlight-cyan">Computer Engineering Student</span> who blends low-level system logic, real-time microcontrollers, and hardware-software workflows.
+                    </p>
 
-        <!-- Continuous Scrolling Content -->
-        <main class="content">
+                    <div class="about-list">
+                        <div class="about-item">
+                            <span class="item-tag">Hardware_Root</span>
+                            <p><strong>University of Michigan</strong> / Computer Engineering. Built a strong foundation in digital logic, circuit design, and low-level system architecture.</p>
+                        </div>
+                        <div class="about-item">
+                            <span class="item-tag">Firmware_Logic</span>
+                            <p><strong>Embedded Systems</strong>. Building real-time applications and multi-node hardware setups through clean, efficient C/C++ code.</p>
+                        </div>
+                        <div class="about-item">
+                            <span class="item-tag">My_Vibe</span>
+                            <p>High-performance, bare-metal systems infused with precise, deterministic details.</p>
+                        </div>
+                    </div>
+
+                    <p class="about-footer">
+                        Equipped with an <span class="highlight-cyan">engineer's eye</span> and a <span class="highlight-cyan">developer's toolkit</span>, I'm ready to build projects that perform at the highest level.
+                    </p>
+                </div>
+
+                <div class="about-right">
+                    <img src="assets/me.jpg" alt="Daniel Park" class="glowing-portrait">
+                    <p class="portrait-caption">/* Daniel Park, 2026 */</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
             
-            <section id="about">
-                <h2>About</h2>
-                <div class="card">
-                    <p>Computer Engineering student at the University of Michigan focused on low-level firmware, real-time microcontrollers, and hardware-software integration.</p>
-                </div>
-            </section>
+            <div class="projects-grid">
+                
+                <a href="#modal-tomjerry" class="project-card-link">
+                    <div class="project-card">
+                        <div class="project-card-header">
+                            <h3>Tom & Jerry Multi-Robot</h3>
+                            <span class="badge badge-purple">ACADEMIC</span>
+                        </div>
+                        <p>Architected a multi-node system using STM32 microcontrollers and a DE2 FPGA with real-time wireless UART tracking and PWM motor control.</p>
+                        <div class="project-tags">
+                            <span class="tag">C/C++</span>
+                            <span class="tag">STM32</span>
+                            <span class="tag">FPGA/Verilog</span>
+                        </div>
+                    </div>
+                </a>
 
-            <section id="projects">
-                <h2>Projects</h2>
-                <div class="card">
-                    <h3>Tom & Jerry Multi-Robot Embedded System</h3>
-                    <p>Architected a multi-node system using STM32 microcontrollers and a DE2 FPGA with real-time wireless UART tracking and PWM motor control.</p>
-                </div>
-                <div class="card">
-                    <h3>Stock Market Simulation</h3>
-                    <p>Designed a high-performance C++ order-matching engine to emulate real-world stock market trading conditions.</p>
-                </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="experience">
-                <h2>Experience</h2>
-                <div class="card">
-                    <h3>Full-Stack Engineer — Crateble</h3>
-                    <p>Developed automated regression testing suites and built full-stack software features across frontend and backend systems.</p>
-                </div>
-            </section>
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="card">
+                <h3>Full-Stack Engineer — Crateble</h3>
+                <p>Developed automated regression testing suites and built full-stack software features across frontend and backend systems.</p>
+            </div>
+        </section>
 
-            <section id="skills">
-                <h2>Skills</h2>
-                <div class="card">
-                    <p><strong>Languages:</strong> C, C++, Python, Verilog, ARM Assembly, JavaScript</p>
-                    <p style="margin-top: 0.5rem;"><strong>Hardware:</strong> STM32, I2C, UART, PWM, Logic Analyzers, Oscilloscopes</p>
-                </div>
-            </section>
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="card">
+                <p><strong>Languages:</strong> C, C++, Python, Verilog, ARM Assembly, JavaScript</p>
+                <p style="margin-top: 0.5rem;"><strong>Hardware:</strong> STM32, I2C, UART, PWM, Logic Analyzers, Oscilloscopes</p>
+            </div>
+        </section>
 
-            <section id="resume">
-                <h2>Resume</h2>
-                <div class="card">
-                    <p>Download my full resume or view technical details on GitHub.</p>
-                </div>
-            </section>
+        <section id="resume">
+            <h2>Resume</h2>
+            <div class="card">
+                <p>Download my full resume or view technical details on GitHub.</p>
+            </div>
+        </section>
 
-            <section id="contact">
-                <h2>Contact</h2>
-                <div class="card">
-                    <p>Email: danielpk@umich.edu</p>
-                    <p style="margin-top: 0.5rem;">GitHub: github.com/danielpark643</p>
-                </div>
-            </section>
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="card">
+                <p>Email: danielpk@umich.edu</p>
+                <p style="margin-top: 0.5rem;">GitHub: github.com/danielpark643</p>
+            </div>
+        </section>
 
-        </main>
+    </main>
+
+    <!-- PURE CSS MODAL FOR TOM & JERRY PROJECT -->
+    <div id="modal-tomjerry" class="modal-overlay">
+        <div class="modal-container">
+            <a href="#projects" class="btn-esc"><span class="times">&times;</span> ESC</a>
+            
+            <div class="modal-header">
+                <span class="badge badge-purple" id="modal-badge">ACADEMIC</span>
+                <h1>Tom & Jerry Embedded System</h1>
+                <p class="modal-tech">C, C++, STM32, DE2 FPGA, Verilog, UART</p>
+            </div>
+
+            <!-- DUAL SMALL IMAGE CONTAINER -->
+            <div class="modal-image-container">
+                <img src="assets/t_j.jpg" alt="Tom & Jerry Project Preview" class="modal-image">
+                <img src="assets/t_j-poster.png" alt="Tom & Jerry Project Detail" class="modal-image">
+            </div>
+
+            <div class="modal-body">
+                <h3 class="modal-heading">// Overview</h3>
+                <p>Architected a gamified embedded system utilizing STM32 microcontrollers and a DE2 FPGA, enabling real-time coordination between an autonomous robot (Jerry) and a PS2 controller-driven robot (Tom). The system integrates a dedicated computer vision pipeline via a Raspberry Pi 3B and PiCam to process visual data, driving custom wireless game logic and rendering a live arena visualization over VGA.</p>
+                
+                <h3 class="modal-heading">// Key Features</h3>
+                <ul>
+                    <li><strong>Autonomous Navigation & Firmware:</strong> Developed motor control and state-machine firmware for the autonomous robot using PWM-driven outputs and I2C time-of-flight sensors for real-time wall avoidance, establishing a framework that also powered the controller-driven robot.</li>
+                    <li><strong>Computer Vision Pipeline:</strong> Configured a Raspberry Pi 3B and Pi See3Cam utilizing OpenCV to process real-time AprilTag detection, calculating precise spatial XY coordinates across the physical arena.</li>
+                    <li><strong>Custom Wireless Communication:</strong> Engineered a robust UART wireless protocol utilizing ESP32 modules to transmit coordinate data and state commands between the vision pipeline, the robots, and the central hub.</li>
+                    <li><strong>Hardware-Accelerated Gamification:</strong> Interfaced an STM32 central hub with a DE2 FPGA to process game states, orchestrate the multi-node network, and render real-time graphics over a VGA display.</li>
+                </ul>
+            </div>
+
+            <div class="modal-actions">
+                <a href="https://github.com/danielpark643" target="_blank" rel="noopener noreferrer" class="btn-action">
+                    GitHub Repo
+                </a>
+                <a href="YOUR_GOOGLE_DRIVE_LINK_HERE" target="_blank" rel="noopener noreferrer" class="btn-action">
+                    Live Demo
+                </a>
+            </div>
+        </div>
     </div>
 
     <!-- JavaScript for Mouse Lighting & Active Nav Highlighting -->
@@ -273,7 +223,7 @@
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 200) {
+                if (pageYOffset >= sectionTop - 150) {
                     current = section.getAttribute('id');
                 }
             });
